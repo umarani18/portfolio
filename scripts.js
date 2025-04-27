@@ -2,7 +2,7 @@
 // Initialize EmailJS with your user ID
 (function() {
     // Replace with your actual EmailJS user ID
-    emailjs.init("YOUR_EMAILJS_USER_ID");
+    emailjs.init("jz0p_XUpBXR_gPiaH");
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Replace with your actual EmailJS service ID and template ID
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_z9n8irk', 'template_hvibt8a', templateParams)
                 .then(function() {
                     // Remove loading message
                     loadingMessage.remove();
