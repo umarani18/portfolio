@@ -38,41 +38,48 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 10);
     };
-    updateProgress();
-
-    // Typewriter effect
+    updateProgress();    // Typewriter effect
     const typewriterText = document.getElementById('typewriter-text');
-    const texts = ['Machine Learning Enthusiast', 'Django & Flask Developer'];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
+    
+    // Only run the typewriter effect if the element exists
+    if (typewriterText) {
+        const texts = ['Machine Learning Enthusiast', 'Django & Flask Developer'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
 
-    function typeEffect() {
-        const currentText = texts[textIndex];
+        function typeEffect() {
+            // Check if element still exists (in case it gets removed from DOM)
+            if (!document.getElementById('typewriter-text')) return;
+            
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriterText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typewriterText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 150;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingSpeed = 1500; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingSpeed = 500; // Pause before typing next
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
         
-        if (isDeleting) {
-            typewriterText.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            typewriterText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 150;
-        }
-
-        if (!isDeleting && charIndex === currentText.length) {
-            isDeleting = true;
-            typingSpeed = 1500; // Pause at end
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typingSpeed = 500; // Pause before typing next
-        }
-
-        setTimeout(typeEffect, typingSpeed);
+        // Start the typewriter effect
+        typeEffect();
     }
-    typeEffect();
 
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
