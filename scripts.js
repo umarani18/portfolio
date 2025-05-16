@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Typewriter effect
     const typewriterText = document.getElementById('typewriter-text');
-    const texts = ['Machine Learning Developer', 'Quantum Computing Enthusiast', 'Django & Flask Developer'];
+    const texts = ['Machine Learning Developer', 'Django & Flask Developer'];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
