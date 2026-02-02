@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Only run the typewriter effect if the element exists
     if (typewriterText) {
-        const texts = ['Machine Learning Enthusiast', 'Django & Flask Developer'];
+        const texts = ['Software Developer'];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
